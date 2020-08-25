@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Container, Navbar } from "react-bootstrap";
+
+import List from "./containers/List";
+import Detail from "./containers/Detail";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand href="/">Top Gifs</Navbar.Brand>
+      </Navbar>
+      <Container
+        fluid
+        className="justify-content-md-center"
+        // style={{ margin: "20px" }}
+      >
+        <Switch>
+          <Route path={"/"} exact component={List} />
+          <Route path={"/gif/:gif"} exact component={Detail} />
+        </Switch>
+      </Container>
+    </Router>
   );
 }
 
